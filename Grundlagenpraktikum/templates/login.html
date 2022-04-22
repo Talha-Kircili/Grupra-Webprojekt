@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+        <link href="/static/css/login.css" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="/static/img/favicon.gif">
+    </head>
+    <body>
+        <form method="post">
+            {% csrf_token %}
+            <div id="absoluteCenteredDiv">
+                <div class="box">
+                    <h1>Login</h1>
+                    <input class="password" name="username" placeholder="PC-XY" required>
+                    <input class="password" name="password" placeholder="Passwort" required>
+                    <input type="submit" class="button" value="Anmelden">
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

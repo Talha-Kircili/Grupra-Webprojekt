@@ -1,0 +1,76 @@
+#styled-table td, #styled-table th {
+    font-size: 13px;
+    border: 2px solid #000000;
+}
+#matrix_box {
+    position: relative;
+    margin: 0;
+    padding: 10px 10px 10px 50px;
+    display: block;
+    cursor: pointer;
+}
+#styled-table th:first-child,
+#styled-table td:first-child {
+    position: sticky;
+    left: 0;
+}
+#matrix {
+    overflow-x: auto;
+    margin: 5px 0;
+    height: 0;
+    position: relative;
+    display: none;
+    -webkit-transition: .3s ease;
+    -moz-transition: .3s ease;
+    transition: .3s ease;
+}
+#matrix_toggle:checked ~ #matrix{
+    height: auto;
+    display: block;
+}
+label[for="matrix_toggle"]:before {content: "Fortschrittsanzeige anzeigen";}
+#matrix_toggle:checked ~ label[for="matrix_toggle"]:before{content: "Fortschrittsanzeige ausblenden";}
+#plus {
+    position: absolute;
+    margin: 5px 10px;
+    z-index: 5;
+    font-size: 2em;
+    line-height: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-transition: .3s ease;
+    -moz-transition: .3s ease;
+    transition: .3s ease;
+}
+#matrix_toggle:checked ~ #plus {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+#matrix_toggle {display: none;}
+#display-remain-time {
+    margin-left: auto;
+    width: fit-content;
+    font-family: 'Roboto';
+    font-size: calc(25px + 2vw);
+    color: #417690;
+}
+#status {color: #ff0000;}
+@media (prefers-color-scheme: dark) {
+    #matrix_box {background-color:  #212121;}
+    .range__point { fill: #ffffff;}
+    #styled-table tr th:first-child,
+    #styled-table td:first-child {background: #272727;}
+    #styled-table tr:hover {color: #ffff00;}
+}
+@media (prefers-color-scheme: light) {
+    #matrix_box {
+        background-color: #f8f8f8;
+        border: 1px solid #e8e8e8;
+    }
+    .range__point { fill: #000000;}
+    #styled-table tr th:first-child,
+    #styled-table td:first-child {background: #ffffff;}
+    #styled-table tr:hover {color: #0000ff;}
+}

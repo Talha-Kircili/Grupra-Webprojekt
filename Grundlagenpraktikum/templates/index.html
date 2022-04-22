@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+        <title>Grundlagenpraktikum</title>
+        <link href="/static/css/menu.css" rel="stylesheet">
+        <link href="/static/css/index.css" rel="stylesheet">
+        <link href="/static/css/icons.css" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="/static/img/favicon.gif">
+    </head>
+    <body>
+        <!-- menu -->
+        <div id="menuToggle">
+            <input type="checkbox" id="toggle" checked>
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+                <a href="{{document}}" target="_blank" class="menu__item" data-tooltip="Versuchsbeschreibung">
+                    <i class="material-icons">picture_as_pdf</i>
+                </a>
+                <!--
+                <a href="faq/" class="menu__item" data-tooltip="Faq">
+                    <i class="material-icons">info</i>
+                </a>
+                -->
+                <a href="logout/" class="menu__item" data-tooltip="Logout">
+                    <i class="material-icons">logout</i>
+                </a>
+            </ul>
+        </div>
+        <div id="container">
+            {% if versuch %}
+            <h1 id='lecture'>{{versuch}}</h1>
+                {{aufgaben|json_script:"aufgaben"}}
+                {{progress|json_script:"progress"}}
+            {% endif %}
+            <div id="queue">
+                <form id="help">
+                    {{Hilfesuche}}
+                    <input id="melden" type="submit" value="Melden">
+                </form>
+                <h1 hidden id="rank_text"></h1>
+            </div>
+            <!-- countdown -->
+            <div id="display-remain-time"></div>
+        </div>
+        <!-- logo -->
+        <img draggable="false" id="logo" src="/static/img/hgi_nds.png"/>
+        <script type="text/javascript" src="/static/js/index.js"></script>
+        <script type="text/javascript" src="/static/js/countdown.js"></script>
+        <script nonce="{{request.csp_nonce}}">main("{{help}}", "{{time}}", "{{csrf_token}}");</script>
+    </body>
+</html>

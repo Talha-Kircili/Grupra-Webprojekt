@@ -1,0 +1,125 @@
+body {
+    background-image: url('/static/img/background.jpg');
+    background-size: cover;
+    background-color: #c0c0c0;
+    background-position-y: 10%;
+    background-repeat: no-repeat;
+    font-family: sans-serif;
+}
+#container {
+    display: flex;
+    justify-content: space-between;
+}
+#queue {
+    order: -1;
+    flex-shrink: 0;
+    margin: 0 0 1vh 75px;
+}
+#priority_field, #melden {
+    cursor: pointer;
+    font-size: calc(15px + 0.5vw);
+    border-radius: 15px;
+    border: 1px solid black;
+    color: black;
+}
+#priority_field {
+    padding: 5px 0;
+    text-align: center;
+    background: #ffffff;
+}
+#melden { padding: 6px 10px; }
+#rank_text { 
+    font-size: calc(10px + 0.5vw);
+    margin-bottom: 0;
+    text-align: center;
+}
+#lecture {
+    margin: 0 250px 1vh 0;
+    text-align: center;
+    font-size: calc(20px + 1vw);
+    color: #000000;
+}
+#display-remain-time {
+    margin-top: -10px;
+    font-family: 'Roboto';
+    font-size: calc(25px + 2vw);
+    color: #851e3e;
+}
+#logo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: calc(30px + 3vw);
+    height: calc(10px + 1.5vw);
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid;
+}
+#styled-table {
+    margin: auto;
+    border-radius: 5px;
+    padding: 1px;
+    background: #495e73AF;
+}
+th, td {
+    padding: 10px;
+    border-radius: 2px;
+}
+th {
+    background-color: #A3B6FF;
+    text-align: center;
+    font-size: calc(15px + 0.5vw);
+}
+td {
+    background-color: #d2f6ff;
+    min-width: 15vw;
+    max-width: 30vw;
+    font-size: calc(12px + 0.5vw);
+}
+.td1 {
+    cursor: pointer;
+    text-align: center;
+    transition: 0.3s;
+    min-width: 0;
+}
+@media (hover: hover) {
+    #melden:hover {
+        transition: 0.3s;
+        color: #803bff;
+    }
+    .td1:hover {
+        background-color: #00000000;
+        color: #ff4f4f;
+        font-weight: bold;
+    }
+}
+/* mobile */
+@media only screen and (max-width : 1060px) {
+    body {background-image: none;}
+    #logo { display: none; }
+    #container {flex-wrap: wrap;}
+    #lecture {
+        flex-basis: 100%;
+        margin: 0 50px 20px;
+        font-size: 5vw; 
+    }
+    #queue {
+        margin: auto 0 1vh auto;
+        order: 0; 
+    }
+    #rank_text {font-size: 1em;}
+    #display-remain-time {
+        font-size: calc(20px + 1vw);
+        border: 1px solid #000000;
+        line-height: 32px;
+        padding: 0 1vw;
+        background: #ffffff;
+        border-radius: 10px;
+        margin: 0 auto auto 5px;
+    }
+    td {  
+        min-width: 40vw;
+        max-width: none;
+    }
+}

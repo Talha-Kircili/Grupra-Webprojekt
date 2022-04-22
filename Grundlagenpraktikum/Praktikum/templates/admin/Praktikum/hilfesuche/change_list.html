@@ -1,0 +1,24 @@
+{% extends "admin/change_list.html" %}
+{% load static %}
+
+{% block extrahead %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="/static/css/admin.css">
+{% endblock %}
+
+{% block content %}
+{% if not status %}
+<h1 id="status">Kein Versuch aktiv</h1>
+{% else %}
+{{progress|json_script:"progress"}}
+<div id="display-remain-time"></div>
+<input type="checkbox" id="matrix_toggle" name="q" checked>
+<div id="plus">+</div>
+<label for="matrix_toggle" id="matrix_box"></label>
+<div id="matrix"></div>
+<script type="text/javascript" src="/static/js/admin.js"></script>
+<script type="text/javascript" src="/static/js/countdown.js"></script>
+<script nonce="{{request.csp_nonce}}">main("{{time}}", "{{status}}", "{{reports}}");</script>
+{% endif %}
+{{ block.super }}
+{% endblock %}
