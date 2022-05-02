@@ -62,7 +62,3 @@
 ### Change password of all Praktikanten:  
 
     python3 manage.py praktikanten_pwd
-
-## NOTES
-
-Admin Credentials: admin:Betreuer
