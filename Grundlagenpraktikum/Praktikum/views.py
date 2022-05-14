@@ -51,21 +51,19 @@ def index(request):
                     ''' Hilfesuche erstellen '''
                     Hilfesuche.objects.create(user = request.user, priority = priority)
         elif "finished" in body_post:
-            if not fortschritt:
-                ''' Fortschritt erstellen '''
-                fortschritt = Fortschritt.objects.create(user = request.user)
-                fortschritt.progress.append(body_post["finished"])
-                fortschritt.save()
-            else:
-                ''' Fortschritt hinzufügen '''
-                fortschritt = fortschritt[0]
-                fortschritt.progress.append(body_post["finished"])
+            ''' Fortschritt hinzufügen '''
+            fortschritt = fortschritt[0]
+            temp = body_post["finished"]
+            if temp not in fortschritt.progress:
+                fortschritt.progress.append(temp)
                 fortschritt.save()
         elif "unfinished" in body_post:
             ''' Fortschritt entfernen '''
             fortschritt = fortschritt[0]
-            fortschritt.progress.remove(body_post["unfinished"])
-            fortschritt.save()
+            temp = body_post["unfinished"]
+            if temp in fortschritt.progress:
+                fortschritt.progress.remove(temp)
+                fortschritt.save()
 
     ''' Initial Werte '''
     versuch = Versuch.objects.filter(status=1)
